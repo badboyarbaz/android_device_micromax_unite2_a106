@@ -96,6 +96,62 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
 
+#TWRP
+TW_SDEXT_NO_EXT4 := true
+TW_EXCLUDE_MTP := true
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
+TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/power_supply/battery/batt_temp"
+RECOVERY_SDCARD_ON_DATA := true
+BOARD_HAS_LARGE_FILESYSTEM := true
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_NO_REBOOT_BOOTLOADER := true
+TW_DEFAULT_EXTERNAL_STORAGE := true
+TW_INTERNAL_STORAGE_PATH := "/emmc"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "emmc"
+TW_EXTERNAL_STORAGE_PATH := "/sdcard"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
+TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
+SP1_NAME := "uboot"
+SP1_BACKUP_METHOD := image
+SP1_MOUNTABLE := 0
+SP2_NAME := "nvram"
+SP2_DISPLAY_NAME := "nvram"
+SP2_BACKUP_METHOD := image
+SP2_MOUNTABLE := 0
+TW_INCLUDE_FB2PNG := true
+USE_CWM_GRAPHICS := true
+
+#flipped screen
+
+#BOARD_HAS_FLIPPED_SCREEN := true
+#RECOVERY_TOUCHSCREEN_SWAP_XY := true
+
+#RECOVERY_TOUCHSCREEN_SWAP_XY := true
+RECOVERY_TOUCHSCREEN_FLIP_Y := true
+RECOVERY_TOUCHSCREEN_FLIP_X := true
+#BOARD_HAS_FLIPPED_SCREEN := true
+
+# Set insecure for root access and device specifics
+ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0 \
+ro.allow.mock.location=1 \
+persist.mtk.aee.aed=on \
+ro.debuggable=1 \
+persist.service.acm.enable=1 \
+persist.sys.usb.config=mass_storage,adb \
+ro.mount.fs=EXT4
+
+#PhilZ Touch build flags for MTK
+TARGET_COMMON_NAME := a106
+BOARD_USE_MTK_LAYOUT := true
+BOARD_USE_NTFS_3G := false
+TARGET_SCREEN_WIDTH := 480
+TARGET_SCREEN_HEIGHT := 800
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+TARGET_DEVICE := a106
+BRIGHTNESS_SYS_FILE := /sys/class/leds/lcd-backlight/brightness
+BOARD_CUSTOM_BOOTIMG_MK := device/micromax/a106/bootimg.mk
+
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_MTK := true
